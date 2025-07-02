@@ -98,19 +98,49 @@ test('Resource Template Completions', async () => {
 		},
 	})
 	
-	// Test that resource templates exist and support completion
+	// Test that resource templates exist
 	const templates = await client.listResourceTemplates()
 	
 	// 🚨 Proactive check: Ensure resource templates are registered
-	invariant(templates.resourceTemplates.length > 0, '🚨 No resource templates found - this exercise requires implementing resource templates with completion callbacks')
+	invariant(templates.resourceTemplates.length > 0, '🚨 No resource templates found - this exercise requires implementing resource templates')
 	
 	const entriesTemplate = templates.resourceTemplates.find(rt => 
 		rt.uriTemplate.includes('entries') && rt.uriTemplate.includes('{')
 	)
-	invariant(entriesTemplate, '🚨 No entries resource template found - should implement epicme://entries/{id} template with completion support')
+	invariant(entriesTemplate, '🚨 No entries resource template found - should implement epicme://entries/{id} template')
 	
-	// 🚨 Additional proactive check: This exercise specifically requires completion callbacks
-	invariant(entriesTemplate.description && entriesTemplate.description.toLowerCase().includes('completion') || 
-		entriesTemplate.name.toLowerCase().includes('completion'), 
-		'🚨 Resource template should indicate completion support in its description or name for this exercise')
+	// 🚨 The key learning objective for this exercise is adding completion support
+	// This requires BOTH declaring completions capability AND implementing complete callbacks
+	
+	// Test if completion capability is properly declared by trying to use completion API
+	let completionSupported = false
+	try {
+		// This should work if server declares completion capability and implements complete callbacks
+		await (client as any)._client.request({
+			method: 'completion/complete',
+			params: {
+				ref: {
+					type: 'resource',
+					uri: 'epicme://entries/{id}',
+				},
+				argument: {
+					name: 'id',
+					value: '1',
+				},
+			},
+		})
+		completionSupported = true
+	} catch (error: any) {
+		// -32601 = Method not found (missing completion capability)
+		// -32602 = Invalid params (missing complete callbacks)
+		if (error?.code === -32601 || error?.code === -32602) {
+			completionSupported = false
+		} else {
+			// Other errors might be acceptable (like no matches found)
+			completionSupported = true
+		}
+	}
+	
+	// 🚨 Proactive check: Completion functionality must be fully implemented
+	invariant(completionSupported, '🚨 Resource template completion requires both declaring completions capability in server AND implementing complete callbacks for template parameters')
 })

@@ -159,8 +159,15 @@ test('Resource List - Tags', async () => {
 	const tagResources = list.resources.filter(r => r.uri.includes('tags'))
 	invariant(tagResources.length > 0, '🚨 No tag resources found in list - the list callback should return actual tags from the database')
 	
-	// Validate the structure of listed tag resources
-	tagResources.forEach(resource => {
+	// Should have both static resource and parameterized resources from list callback
+	const staticTagsResource = tagResources.find(r => r.uri === 'epicme://tags')
+	const parameterizedTagResources = tagResources.filter(r => r.uri.match(/epicme:\/\/tags\/\d+/))
+	
+	// 🚨 Proactive check: List should include resources from template list callback
+	invariant(parameterizedTagResources.length > 0, '🚨 No parameterized tag resources found - the resource template list callback should return individual tags')
+	
+	// Validate the structure of parameterized tag resources (from list callback)
+	parameterizedTagResources.forEach(resource => {
 		expect(resource).toEqual(
 			expect.objectContaining({
 				name: expect.any(String),

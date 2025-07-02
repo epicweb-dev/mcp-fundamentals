@@ -139,15 +139,17 @@ test('Optimized Prompt with Embedded Resources', async () => {
 	const resourceMessages = result.messages.filter(m => m.content.type === 'resource')
 	invariant(resourceMessages.length > 0, '🚨 Optimized prompt should embed resource data directly instead of instructing LLM to run tools')
 	
-	// 🚨 Proactive check: Ensure prompt doesn't tell LLM to run tools (that's what we're optimizing away)
+	// 🚨 Proactive check: Ensure prompt doesn't tell LLM to run data retrieval tools (that's what we're optimizing away)
 	const textMessages = result.messages.filter(m => m.content.type === 'text')
-	const hasToolInstructions = textMessages.some(m => 
+	const hasDataRetrievalInstructions = textMessages.some(m => 
 		typeof m.content.text === 'string' && 
 		(m.content.text.toLowerCase().includes('get_entry') || 
 		 m.content.text.toLowerCase().includes('list_tags') ||
-		 m.content.text.toLowerCase().includes('create_tag'))
+		 m.content.text.toLowerCase().includes('look up'))
 	)
-	invariant(!hasToolInstructions, '🚨 Optimized prompt should NOT instruct LLM to run tools - data should be embedded directly')
+	invariant(!hasDataRetrievalInstructions, '🚨 Optimized prompt should NOT instruct LLM to run data retrieval tools like get_entry or list_tags - data should be embedded directly')
+	
+	// Note: The prompt can still instruct the LLM to use action tools like create_tag or add_tag_to_entry
 	
 	// Validate structure of resource messages
 	resourceMessages.forEach(resMsg => {
