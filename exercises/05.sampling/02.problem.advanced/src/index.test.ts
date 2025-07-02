@@ -152,6 +152,32 @@ test('Sampling', async () => {
 		}),
 	)
 
+	// 🚨 Proactive checks for advanced sampling requirements
+	const params = request.params
+	invariant(params && 'maxTokens' in params, '🚨 maxTokens parameter is required')
+	invariant(params.maxTokens > 50, '🚨 maxTokens should be increased for longer responses (>50)')
+	
+	invariant(params && 'systemPrompt' in params, '🚨 systemPrompt is required')
+	invariant(typeof params.systemPrompt === 'string', '🚨 systemPrompt must be a string')
+	
+	invariant(params && 'messages' in params && Array.isArray(params.messages), '🚨 messages array is required')
+	const userMessage = params.messages.find(m => m.role === 'user')
+	invariant(userMessage, '🚨 User message is required')
+	invariant(userMessage.content.mimeType === 'application/json', '🚨 Content should be JSON for structured data')
+	
+	// 🚨 Validate the JSON structure contains required fields
+	invariant(typeof userMessage.content.text === 'string', '🚨 User message content text must be a string')
+	let messageData: any
+	try {
+		messageData = JSON.parse(userMessage.content.text)
+	} catch (error) {
+		throw new Error('🚨 User message content must be valid JSON')
+	}
+	
+	invariant(messageData.entry, '🚨 JSON should contain entry data')
+	invariant(messageData.existingTags, '🚨 JSON should contain existingTags for context')
+	invariant(Array.isArray(messageData.existingTags), '🚨 existingTags should be an array')
+
 	messageResultDeferred.resolve({
 		model: 'stub-model',
 		stopReason: 'endTurn',

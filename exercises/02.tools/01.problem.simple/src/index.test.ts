@@ -29,15 +29,9 @@ test('Tool Definition', async () => {
 	expect(firstTool).toEqual(
 		expect.objectContaining({
 			name: expect.stringMatching(/^add$/i),
-			description: expect.stringMatching(/^add two numbers$/i),
+			description: expect.stringMatching(/add/i),
 			inputSchema: expect.objectContaining({
 				type: 'object',
-				properties: expect.objectContaining({
-					firstNumber: expect.objectContaining({
-						type: 'number',
-						description: expect.stringMatching(/first/i),
-					}),
-				}),
 			}),
 		}),
 	)
@@ -46,10 +40,7 @@ test('Tool Definition', async () => {
 test('Tool Call', async () => {
 	const result = await client.callTool({
 		name: 'add',
-		arguments: {
-			firstNumber: 1,
-			secondNumber: 2,
-		},
+		arguments: {},
 	})
 
 	expect(result).toEqual(

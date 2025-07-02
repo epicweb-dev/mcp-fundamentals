@@ -37,9 +37,24 @@ test('Tool Definition', async () => {
 						type: 'number',
 						description: expect.stringMatching(/first/i),
 					}),
+					secondNumber: expect.objectContaining({
+						type: 'number',
+						description: expect.stringMatching(/second/i),
+					}),
 				}),
+				required: expect.arrayContaining(['firstNumber', 'secondNumber']),
 			}),
 		}),
+	)
+	
+	// 🚨 Proactive check: Ensure the tool schema includes both required arguments
+	invariant(
+		firstTool.inputSchema?.properties?.firstNumber,
+		'🚨 Tool must have firstNumber parameter defined'
+	)
+	invariant(
+		firstTool.inputSchema?.properties?.secondNumber,
+		'🚨 Tool must have secondNumber parameter defined'
 	)
 })
 
@@ -58,6 +73,27 @@ test('Tool Call', async () => {
 				expect.objectContaining({
 					type: 'text',
 					text: expect.stringMatching(/3/),
+				}),
+			]),
+		}),
+	)
+})
+
+test('Tool Call with Different Numbers', async () => {
+	const result = await client.callTool({
+		name: 'add',
+		arguments: {
+			firstNumber: 5,
+			secondNumber: 7,
+		},
+	})
+
+	expect(result).toEqual(
+		expect.objectContaining({
+			content: expect.arrayContaining([
+				expect.objectContaining({
+					type: 'text',
+					text: expect.stringMatching(/12/),
 				}),
 			]),
 		}),
