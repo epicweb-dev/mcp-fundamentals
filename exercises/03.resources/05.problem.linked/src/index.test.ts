@@ -69,3 +69,65 @@ test('Tool Call', async () => {
 		}),
 	)
 })
+
+test('Resource Link in Tool Response', async () => {
+	try {
+		const result = await client.callTool({
+			name: 'create_entry',
+			arguments: {
+				title: 'Linked Entry Test',
+				content: 'This entry should be linked as a resource',
+			},
+		})
+
+		// 🚨 The key learning objective: Tool responses should include resource_link content
+		// when creating resources, not just text confirmations
+		
+		// Type guard for content array
+		const content = result.content as Array<any>
+		invariant(Array.isArray(content), '🚨 Tool response content must be an array')
+		
+		// Check if response includes resource_link content type
+		const hasResourceLink = content.some((item: any) => 
+			item.type === 'resource_link'
+		)
+		
+		if (!hasResourceLink) {
+			throw new Error('Tool response should include resource_link content type')
+		}
+		
+		// Find the resource_link content
+		const resourceLink = content.find((item: any) => 
+			item.type === 'resource_link'
+		) as any
+		
+		// 🚨 Proactive checks: Resource link should have proper structure
+		invariant(resourceLink, '🚨 Tool response should include resource_link content type')
+		invariant(resourceLink.uri, '🚨 Resource link must have uri field')
+		invariant(resourceLink.name, '🚨 Resource link must have name field')
+		invariant(typeof resourceLink.uri === 'string', '🚨 Resource link uri must be a string')
+		invariant(typeof resourceLink.name === 'string', '🚨 Resource link name must be a string')
+		invariant(resourceLink.uri.includes('entries'), '🚨 Resource link URI should reference the created entry')
+		
+		expect(resourceLink).toEqual(
+			expect.objectContaining({
+				type: 'resource_link',
+				uri: expect.stringMatching(/epicme:\/\/entries\/\d+/),
+				name: expect.stringMatching(/Linked Entry Test/),
+				description: expect.any(String),
+				mimeType: expect.stringMatching(/application\/json/),
+			}),
+		)
+		
+	} catch (error) {
+		console.error('🚨 Resource linking not implemented in tool responses!')
+		console.error('🚨 This exercise teaches you how to include resource links in tool responses')
+		console.error('🚨 You need to:')
+		console.error('🚨   1. When your tool creates a resource, include a resource_link content item')
+		console.error('🚨   2. Set type: "resource_link" in the response content')
+		console.error('🚨   3. Include uri, name, description, and mimeType fields')
+		console.error('🚨   4. The URI should point to the created resource (e.g., epicme://entries/1)')
+		console.error('🚨 Example: { type: "resource_link", uri: "epicme://entries/1", name: "My Entry", description: "...", mimeType: "application/json" }')
+		throw new Error(`🚨 Tool should include resource_link content type when creating resources. ${error}`)
+	}
+})

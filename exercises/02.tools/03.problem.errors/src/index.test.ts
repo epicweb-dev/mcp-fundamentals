@@ -88,17 +88,30 @@ test('Tool Call - Error with Negative Second Number', async () => {
 		},
 	})
 
-	expect(result).toEqual(
-		expect.objectContaining({
-			content: expect.arrayContaining([
-				expect.objectContaining({
-					type: 'text',
-					text: expect.stringMatching(/negative/i),
-				}),
-			]),
-			isError: true,
-		}),
-	)
+	try {
+		expect(result).toEqual(
+			expect.objectContaining({
+				content: expect.arrayContaining([
+					expect.objectContaining({
+						type: 'text',
+						text: expect.stringMatching(/negative/i),
+					}),
+				]),
+				isError: true,
+			}),
+		)
+	} catch (error) {
+		console.error('🚨 Tool error handling not properly implemented!')
+		console.error('🚨 This exercise teaches you how to handle errors in MCP tools')
+		console.error('🚨 Expected: Tool should return isError: true with message about negative numbers')
+		console.error(`🚨 Actual: Tool returned normal response: ${JSON.stringify(result, null, 2)}`)
+		console.error('🚨 You need to:')
+		console.error('🚨   1. Check if secondNumber is negative in your add tool')
+		console.error('🚨   2. Throw an Error with message containing "negative"')
+		console.error('🚨   3. The MCP SDK will automatically set isError: true')
+		console.error('🚨 In src/index.ts, add: if (secondNumber < 0) throw new Error("Second number cannot be negative")')
+		throw new Error(`🚨 Tool should return error response when secondNumber is negative, but returned normal response instead. ${error}`)
+	}
 })
 
 test('Tool Call - Another Successful Addition', async () => {
