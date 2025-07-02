@@ -113,13 +113,13 @@ test('Prompts List', async () => {
 			console.error('🚨 You need to:')
 			console.error('🚨   1. Add "prompts" to your server capabilities')
 			console.error(
-				'🚨   2. Import ListPromptsRequestSchema and GetPromptRequestSchema',
+				'🚨   2. Create an initializePrompts function in a prompts.ts file',
 			)
 			console.error(
-				'🚨   3. Set up handlers: server.setRequestHandler(ListPromptsRequestSchema, ...)',
+				'🚨   3. Use server.registerPrompt() to register prompts',
 			)
 			console.error(
-				'🚨   4. Set up handlers: server.setRequestHandler(GetPromptRequestSchema, ...)',
+				'🚨   4. Call initializePrompts() in your main init() method',
 			)
 			console.error(
 				'🚨   5. Register prompts that can help users analyze their journal entries',

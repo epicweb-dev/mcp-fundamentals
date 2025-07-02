@@ -186,13 +186,13 @@ test('Resource Template Read - Entry', async () => {
 			)
 			console.error('🚨 You need to:')
 			console.error(
-				'🚨   1. Register resource templates with server.setRequestHandler(ListResourceTemplatesRequestSchema, ...)',
+				'🚨   1. Register resource templates with server.registerResource() using ResourceTemplate',
 			)
 			console.error(
-				'🚨   2. Handle ReadResourceRequestSchema with URI parameter extraction',
+				'🚨   2. Use ResourceTemplate to define parameterized URIs like epicme://entries/{id}',
 			)
 			console.error(
-				'🚨   3. Parse the {id} from the URI and query your database',
+				'🚨   3. The callback function will receive extracted parameters like { id }',
 			)
 			console.error('🚨   4. Return the resource content as JSON')
 			console.error(
