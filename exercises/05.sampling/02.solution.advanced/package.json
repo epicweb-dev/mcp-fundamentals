@@ -2,11 +2,6 @@
   "name": "exercises_05.sampling_02.solution.advanced",
   "private": true,
   "type": "module",
-  "epicshop": {
-    "testTab": {
-      "enabled": true
-    }
-  },
   "scripts": {
     "dev": "mcp-dev",
     "dev:mcp": "tsx src/index.ts",

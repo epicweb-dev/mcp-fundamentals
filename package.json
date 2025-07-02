@@ -14,9 +14,6 @@
       "host": "www.epicai.pro",
       "displayName": "EpicAI.pro",
       "displayNameShort": "Epic AI"
-    },
-    "testTab": {
-      "enabled": false
     }
   },
   "type": "module",

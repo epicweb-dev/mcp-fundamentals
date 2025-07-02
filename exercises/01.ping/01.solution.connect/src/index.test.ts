@@ -13,7 +13,14 @@ beforeAll(async () => {
 		command: 'tsx',
 		args: ['src/index.ts'],
 	})
-	await client.connect(transport)
+	try {
+		await client.connect(transport)
+	} catch (error) {
+		console.error(
+			'🚨 Could not connect to MCP server. Have you created the server and connected it to the STDIO transport yet?',
+		)
+		throw error
+	}
 })
 
 afterAll(async () => {
