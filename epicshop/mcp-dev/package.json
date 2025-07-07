@@ -1,8 +1,0 @@
-{
-  "name": "@epic-web/mcp-dev",
-  "version": "1.0.0",
-  "type": "module",
-  "bin": {
-    "mcp-dev": "./dev.js"
-  }
-}
