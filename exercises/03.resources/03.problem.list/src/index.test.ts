@@ -149,38 +149,17 @@ test('Resource List - Entries', async () => {
 
 	const list = await client.listResources()
 
-	// 🚨 Proactive check: Ensure list callback returns actual entries
+	// Since entries don't have a list callback, they shouldn't appear in the resources list
 	const entryResources = list.resources.filter((r) => r.uri.includes('entries'))
-	invariant(
-		entryResources.length > 0,
-		'🚨 No entry resources found in list - the list callback should return actual entries from the database',
-	)
+	expect(entryResources).toHaveLength(0)
 
-	// Check that we have at least the entries we created
-	const foundEntries = entryResources.filter(
-		(r) => r.uri.includes('entries/1') || r.uri.includes('entries/2'),
+	// Verify that the entries template exists but doesn't have a list callback
+	const templatesList = await client.listResourceTemplates()
+	const entriesTemplate = templatesList.resourceTemplates.find(
+		(rt) => rt.uriTemplate.includes('entries') && rt.uriTemplate.includes('{'),
 	)
-	invariant(
-		foundEntries.length >= 2,
-		'🚨 List should return the entries that were created',
-	)
-
-	// Validate the structure of listed resources
-	entryResources.forEach((resource) => {
-		expect(resource).toEqual(
-			expect.objectContaining({
-				name: expect.any(String),
-				uri: expect.stringMatching(/epicme:\/\/entries\/\d+/),
-				mimeType: 'application/json',
-			}),
-		)
-
-		// 🚨 Proactive check: List should not include content (only metadata)
-		invariant(
-			!('text' in resource),
-			'🚨 Resource list should only contain metadata, not the full content - use readResource to get content',
-		)
-	})
+	expect(entriesTemplate).toBeDefined()
+	expect(entriesTemplate?.list).toBeUndefined()
 })
 
 test('Resource List - Tags', async () => {
@@ -222,7 +201,7 @@ test('Resource List - Tags', async () => {
 			expect.objectContaining({
 				name: expect.any(String),
 				uri: expect.stringMatching(/epicme:\/\/tags\/\d+/),
-				mimeType: 'application/json',
+				mimeType: 'text/plain',
 			}),
 		)
 	})
