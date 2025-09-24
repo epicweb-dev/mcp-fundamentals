@@ -33,7 +33,7 @@ export async function initializeResources(agent: EpicMeMCP) {
 					resources: tags.map((tag) => ({
 						name: tag.name,
 						uri: `epicme://tags/${tag.id}`,
-						mimeType: 'application/json',
+						mimeType: 'text/plain',
 					})),
 				}
 			},
