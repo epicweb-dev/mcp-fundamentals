@@ -201,7 +201,7 @@ test('Resource List - Tags', async () => {
 			expect.objectContaining({
 				name: expect.any(String),
 				uri: expect.stringMatching(/epicme:\/\/tags\/\d+/),
-				mimeType: 'text/plain',
+				mimeType: 'application/json',
 			}),
 		)
 	})
