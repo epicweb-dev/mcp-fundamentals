@@ -164,7 +164,7 @@ test('Prompts List', async () => {
 })
 
 test('Prompt Argument Completion', async () => {
-	await using setup = await setupClient({ capabilities: { completion: true } })
+	await using setup = await setupClient()
 	const { client } = setup
 	// First create some entries to have data for completion
 	await client.callTool({

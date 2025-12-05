@@ -11,18 +11,18 @@
   },
   "dependencies": {
     "@epic-web/invariant": "^1.0.0",
-    "@modelcontextprotocol/sdk": "^1.20.0",
+    "@modelcontextprotocol/sdk": "^1.24.3",
     "zod": "^3.25.67"
   },
   "devDependencies": {
     "@epic-web/config": "^1.21.3",
     "@epic-web/mcp-dev": "*",
     "@faker-js/faker": "^10.1.0",
-    "@modelcontextprotocol/inspector": "^0.17.1",
-    "@types/node": "^24.7.2",
-    "tsx": "^4.20.6",
+    "@modelcontextprotocol/inspector": "^0.17.5",
+    "@types/node": "^24.10.1",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "vitest": "^3.2.4"
+    "vitest": "^4.0.15"
   },
   "license": "GPL-3.0-only"
 }

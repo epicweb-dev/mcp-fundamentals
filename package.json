@@ -63,8 +63,8 @@
   },
   "devDependencies": {
     "@epic-web/config": "^1.21.3",
-    "eslint": "^9.37.0",
-    "prettier": "^3.6.2",
+    "eslint": "^9.39.1",
+    "prettier": "^3.7.4",
     "typescript": "^5.9.3"
   },
   "prettier": "@epic-web/config/prettier"

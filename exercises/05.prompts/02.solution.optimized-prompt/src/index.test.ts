@@ -184,6 +184,7 @@ test('Optimized Prompt with Embedded Resources', async () => {
 		)
 		const hasDataRetrievalInstructions = textMessages.some(
 			(m) =>
+				m.content.type === 'text' &&
 				typeof m.content.text === 'string' &&
 				(m.content.text.toLowerCase().includes('get_entry') ||
 					m.content.text.toLowerCase().includes('list_tags') ||
