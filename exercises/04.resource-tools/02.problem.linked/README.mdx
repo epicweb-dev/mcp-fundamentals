@@ -14,9 +14,10 @@ or fetch related data on demand.
 
 Your goal in this step:
 
-- Update the `list_entries` and `list_tags` tools so when they create a tag or
-  entry, we tell them it was created and also include a reference to the tag or
-  entry (using the `type: 'resource_link'` content type in the response).
+- Update the `list_entries` and `list_tags` tools so that when they return results, 
+  the response does not include the full content of the resources, but instead 
+  provides a list of references to each entry or tag (using the `resource_link` 
+  content type).
 - Make sure the resource includes the correct URI and metadata, so clients can
   easily fetch the resource if they want more details.
 
