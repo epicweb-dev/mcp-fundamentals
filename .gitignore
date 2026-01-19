@@ -16,3 +16,5 @@ data.db
 
 .wrangler/
 db.sqlite
+
+saved-playgrounds
