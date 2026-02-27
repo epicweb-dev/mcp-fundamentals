@@ -302,11 +302,12 @@ way that invalidates current recorded walkthroughs.
 
 ### Breaking changes in the current recommended update direction
 
-1. **SDK baseline upgrade to current line (`@modelcontextprotocol/sdk v1.27.1`+)**
+1. **SDK baseline upgrade to current line
+   (`@modelcontextprotocol/sdk v1.27.1`+)**
    - Why this is breaking: stricter spec/type behavior in newer SDK versions can
      require edits to exercise step solutions and tests.
-   - Re-record impact: any lesson video that shows solution code or test behavior
-     affected by SDK alignment.
+   - Re-record impact: any lesson video that shows solution code or test
+     behavior affected by SDK alignment.
 
 2. **Add icons metadata examples to core primitives**
    - Why this is breaking: solution code must change where tools/resources/
@@ -330,8 +331,8 @@ way that invalidates current recorded walkthroughs.
 ### Not breaking (no re-record required by itself)
 
 - Spec URL/version link updates only.
-- Instruction wording/policy updates only (including "no backwards compatibility"
-  posture text).
+- Instruction wording/policy updates only (including "no backwards
+  compatibility" posture text).
 - Draft watchlist and planning notes that do not alter exercise code.
 
 ---
