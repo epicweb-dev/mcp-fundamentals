@@ -216,7 +216,8 @@ Current draft changelog vs `2025-11-25` is small but non-zero.
 - Likely impact on this workshop if draft ships soon:
   - Update lifecycle/capabilities teaching to include optional extension
     negotiation.
-  - Ensure examples/tests do not assume a fully-closed capabilities object shape.
+  - Ensure examples/tests do not assume a fully-closed capabilities object
+    shape.
 - Preemptive action now:
   - Add one short note + snippet in the intro/lifecycle material showing
     `capabilities.extensions` as optional and forward-compatible.
@@ -231,7 +232,7 @@ Current draft changelog vs `2025-11-25` is small but non-zero.
   - Still useful to teach that `_meta` may carry tracing context and should not
     be stripped accidentally.
 - Preemptive action now:
-  - Add a brief “_meta is reserved and may include trace context” callout in
+  - Add a brief “\_meta is reserved and may include trace context” callout in
     lifecycle/protocol fundamentals.
 
 ### Draft risk level summary
@@ -318,8 +319,7 @@ Authentication / MCP-UI._
 
 ### 3) Add one-week draft hedge changes now
 
-1. Add a short lifecycle note/snippet for optional
-   `capabilities.extensions`.
+1. Add a short lifecycle note/snippet for optional `capabilities.extensions`.
 2. Add a short protocol note that `_meta` may carry trace context keys
    (`traceparent`, `tracestate`, `baggage`).
 3. Keep these as lightweight notes so if draft becomes stable quickly, this
