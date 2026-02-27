@@ -8,6 +8,14 @@ Identify what changed in MCP since the November 2025 spec release and what
 should be represented in this workshop material, with routing guidance for the
 full 4-workshop series.
 
+## Update posture for this refresh (explicit)
+
+- We **do not care about backwards compatibility** for this workshop refresh.
+- We will teach MCP as it exists **currently** (stable spec `2025-11-25`, latest
+  stable TypeScript SDK line).
+- We will remove or avoid “legacy compatibility” teaching paths unless they are
+  explicitly called out as historical context.
+
 ## Scope + sources used
 
 - MCP spec releases from GitHub: `modelcontextprotocol/modelcontextprotocol`
@@ -188,6 +196,52 @@ For updated 2026 workshop material, target
 **`@modelcontextprotocol/sdk >= v1.27.1`** to pick up the latest
 spec/backport/security fixes from this period.
 
+Given the “no backwards compatibility” posture, teach one baseline only:
+
+1. Spec references pinned to `2025-11-25`
+2. SDK examples based on `v1.27.1`+ behavior
+3. No special guidance for old protocol revisions/legacy clients in core
+   exercises
+
+---
+
+## Draft spec watchlist (if draft became stable next week)
+
+Current draft changelog vs `2025-11-25` is small but non-zero.
+
+### Draft item 1: `extensions` in client/server capabilities
+
+- Draft adds an `extensions` field to both `ClientCapabilities` and
+  `ServerCapabilities`.
+- Likely impact on this workshop if draft ships soon:
+  - Update lifecycle/capabilities teaching to include optional extension
+    negotiation.
+  - Ensure examples/tests do not assume a fully-closed capabilities object shape.
+- Preemptive action now:
+  - Add one short note + snippet in the intro/lifecycle material showing
+    `capabilities.extensions` as optional and forward-compatible.
+
+### Draft item 2: OpenTelemetry trace context conventions in `_meta`
+
+- Draft documents `_meta` key conventions for `traceparent`, `tracestate`, and
+  `baggage`.
+- Likely impact on this workshop if draft ships soon:
+  - Mostly documentation-level for Fundamentals; implementation depth belongs
+    more in advanced/production topics.
+  - Still useful to teach that `_meta` may carry tracing context and should not
+    be stripped accidentally.
+- Preemptive action now:
+  - Add a brief “_meta is reserved and may include trace context” callout in
+    lifecycle/protocol fundamentals.
+
+### Draft risk level summary
+
+- **Risk level:** Low-to-medium for Fundamentals.
+- **Why:** No major feature shifts in draft changelog; changes are additive and
+  mostly around negotiation/observability conventions.
+- **One-week hedge:** include the two preemptive notes above now so a near-term
+  release does not force structural lesson rewrites.
+
 ---
 
 ## What’s missing in this Fundamentals workshop right now (concept gaps)
@@ -239,36 +293,44 @@ Authentication / MCP-UI._
 
 ---
 
-## Proposed upgrade backlog (planning starter)
+## Recommended actions to take (clear checklist)
 
-## P0 — Immediate trust-restoring refresh (this repo)
+### 1) Lock decisions now (non-negotiable)
+
+1. Confirm and publish the policy: **no backwards compatibility support in core
+   workshop content**.
+2. Teach against one baseline only:
+   - spec `2025-11-25`
+   - SDK `v1.27.1`+.
+3. Remove stale links and legacy-version framing from learner-facing docs.
+
+### 2) Ship the Fundamentals refresh immediately (this repo)
 
 1. Update all spec links from `2025-06-18` to `2025-11-25`.
-2. Bump SDK baseline to `v1.27.1` (and align inspector version accordingly).
-3. Re-run exercise tests and adjust any typing/schema breakage from stricter SDK
-   types.
-4. Add a short “protocol revision baseline” note at workshop intro.
+2. Bump exercise dependencies to `@modelcontextprotocol/sdk` latest stable
+   (`v1.27.1` or newer) and align inspector accordingly.
+3. Re-run exercise tests and fix any typing/schema strictness issues.
+4. Add/update lesson content for:
+   - tool naming guidance,
+   - icons metadata on tools/resources/prompts/templates,
+   - JSON Schema 2020-12 default-dialect behavior,
+   - tool execution vs protocol error handling language.
 
-## P1 — Fundamentals concept alignment
+### 3) Add one-week draft hedge changes now
 
-1. Add tool naming guidance callout (SEP-986 era guidance).
-2. Add icons metadata examples in:
-   - tools chapter,
-   - resources chapter (including template),
-   - prompts chapter.
-3. Add JSON Schema usage callout (default 2020-12, explicit `$schema` if
-   needed).
-4. Update error-handling chapter wording/examples for 2025-11 semantics.
+1. Add a short lifecycle note/snippet for optional
+   `capabilities.extensions`.
+2. Add a short protocol note that `_meta` may carry trace context keys
+   (`traceparent`, `tracestate`, `baggage`).
+3. Keep these as lightweight notes so if draft becomes stable quickly, this
+   workshop remains current with minimal additional edits.
 
-## P2 — Cross-series coordination
+### 4) Parallel cross-workshop updates (series-level)
 
-1. Build Advanced workshop modules for:
-   - sampling-with-tools,
-   - modern elicitation modes/schema,
-   - tasks.
-2. Build Remote Auth workshop updates for 2025-11 auth discovery/consent
-   changes.
-3. Add MCP-UI guidance for metadata-driven UX (icons/annotations).
+1. **Advanced MCP Features:** sampling-with-tools, elicitation updates, tasks.
+2. **Remote with Authentication:** OIDC discovery, incremental scopes, protected
+   resource metadata behavior, OAuth metadata docs.
+3. **MCP-UI:** practical UX use of icons + annotations.
 
 ---
 
@@ -276,8 +338,11 @@ Authentication / MCP-UI._
 
 - **Tasks are explicitly experimental** in spec `2025-11-25`; avoid
   over-promising stability in learner messaging.
+- Because we are intentionally dropping backwards compatibility, older MCP
+  clients may not align with taught behavior; this is an accepted tradeoff for
+  this refresh.
 - **Client support is uneven** for some newer features; workshop copy should
-  distinguish “spec-defined” vs “widely implemented in clients today.”
+  still distinguish “spec-defined” vs “widely implemented in clients today.”
 - **Version drift risk** remains high if docs pin old spec URLs; treat link
   updates as mandatory, not optional polish.
 
