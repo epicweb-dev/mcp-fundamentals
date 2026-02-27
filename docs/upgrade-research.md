@@ -294,6 +294,48 @@ Authentication / MCP-UI._
 
 ---
 
+## BREAKING CHANGES (video re-record required)
+
+_Definition for this plan:_ a change is "breaking" if it requires changing
+exercise code/step solutions, or adding/removing/restructuring exercises in a
+way that invalidates current recorded walkthroughs.
+
+### Breaking changes in the current recommended update direction
+
+1. **SDK baseline upgrade to current line (`@modelcontextprotocol/sdk v1.27.1`+)**
+   - Why this is breaking: stricter spec/type behavior in newer SDK versions can
+     require edits to exercise step solutions and tests.
+   - Re-record impact: any lesson video that shows solution code or test behavior
+     affected by SDK alignment.
+
+2. **Add icons metadata examples to core primitives**
+   - Why this is breaking: solution code must change where tools/resources/
+     resource templates/prompts are registered.
+   - Re-record impact: Tools, Resources, Resource-Tools, and Prompts recordings
+     that demonstrate those solution steps.
+
+3. **Adopt stricter schema guidance in exercise solutions (if enforced)**
+   - Scope: no-arg tool schema patterns, explicit 2020-12-friendly schema
+     handling, and any test assertions enforcing those patterns.
+   - Why this is breaking: solution snippets and passing test outputs would
+     change.
+   - Re-record impact: affected exercise steps where schemas are taught or
+     validated.
+
+4. **Any exercise inventory change (add/remove/reorder exercises or steps)**
+   - Why this is breaking: existing video sequence no longer matches learner
+     navigation and expected diffs.
+   - Re-record impact: all recordings touching modified flow segments.
+
+### Not breaking (no re-record required by itself)
+
+- Spec URL/version link updates only.
+- Instruction wording/policy updates only (including "no backwards compatibility"
+  posture text).
+- Draft watchlist and planning notes that do not alter exercise code.
+
+---
+
 ## Recommended actions to take (clear checklist)
 
 ### 1) Lock decisions now (non-negotiable)
