@@ -4,15 +4,19 @@ _Last updated: 2026-02-26_
 
 ## Goal
 
-Identify what changed in MCP since the November 2025 spec release and what should be represented in this workshop material, with routing guidance for the full 4-workshop series.
+Identify what changed in MCP since the November 2025 spec release and what
+should be represented in this workshop material, with routing guidance for the
+full 4-workshop series.
 
 ## Scope + sources used
 
-- MCP spec releases from GitHub: `modelcontextprotocol/modelcontextprotocol` (starting with `2025-11-25`).
+- MCP spec releases from GitHub: `modelcontextprotocol/modelcontextprotocol`
+  (starting with `2025-11-25`).
 - MCP spec changelog + docs for:
   - `2025-11-25`
   - previous baseline used by this workshop: `2025-06-18`
-- TypeScript SDK releases from GitHub: `modelcontextprotocol/typescript-sdk`, all tags from October 2025 onward (`1.19.0` through `v1.27.1`).
+- TypeScript SDK releases from GitHub: `modelcontextprotocol/typescript-sdk`,
+  all tags from October 2025 onward (`1.19.0` through `v1.27.1`).
 - Current workshop code/docs in this repo.
 
 ---
@@ -48,7 +52,8 @@ Identify what changed in MCP since the November 2025 spec release and what shoul
 
 ### Release reality check
 
-- Since November 2025, the MCP spec has one stable release: `2025-11-25` (plus `2025-11-25-RC`).
+- Since November 2025, the MCP spec has one stable release: `2025-11-25` (plus
+  `2025-11-25-RC`).
 - No newer stable spec revision exists yet beyond `2025-11-25`.
 
 ### Full delta assessment: added/removed/changed and workshop impact
@@ -57,25 +62,33 @@ The `2025-11-25` changelog is the authoritative delta from `2025-06-18`.
 
 #### A) Directly affects this Fundamentals workshop (should be represented here)
 
-1. **Icons metadata added for tools/resources/resource templates/prompts** (added)
-   - New metadata can now be surfaced on all core server primitives this workshop teaches.
+1. **Icons metadata added for tools/resources/resource templates/prompts**
+   (added)
+   - New metadata can now be surfaced on all core server primitives this
+     workshop teaches.
    - Impact: high for conceptual completeness, low implementation complexity.
-   - Recommendation: add at least one worked example in each relevant chapter (tools, resources, prompts), while noting client support may vary.
+   - Recommendation: add at least one worked example in each relevant chapter
+     (tools, resources, prompts), while noting client support may vary.
 
 2. **Tool naming guidance formalized (SEP-986)** (changed)
-   - Naming guidance now explicitly recommends restricted character set/length and uniqueness constraints.
+   - Naming guidance now explicitly recommends restricted character set/length
+     and uniqueness constraints.
    - Impact: medium. This workshop teaches tool naming heavily.
-   - Recommendation: add a concise naming rule box and a quick lint-like check in tests/docs. Current names (snake_case) are mostly compatible.
+   - Recommendation: add a concise naming rule box and a quick lint-like check
+     in tests/docs. Current names (snake_case) are mostly compatible.
 
 3. **JSON Schema 2020-12 is now the default dialect** (changed)
    - MCP now has explicit JSON Schema usage rules and default dialect behavior.
    - Impact: medium. This workshop teaches tool schemas and prompt args.
-   - Recommendation: add a schema-dialect note; clarify when to set `$schema` explicitly and that no-arg tools should still use valid object schema.
+   - Recommendation: add a schema-dialect note; clarify when to set `$schema`
+     explicitly and that no-arg tools should still use valid object schema.
 
 4. **Tool error handling guidance tightened** (changed)
-   - Spec clarifies input validation errors should be surfaced as tool execution errors (model-correctable), not generic protocol errors.
+   - Spec clarifies input validation errors should be surfaced as tool execution
+     errors (model-correctable), not generic protocol errors.
    - Impact: medium/high. Error handling is an explicit exercise objective.
-   - Recommendation: refresh error-handling narrative and examples to match 2025-11 terminology and intent.
+   - Recommendation: refresh error-handling narrative and examples to match
+     2025-11 terminology and intent.
 
 5. **`Implementation.description` added** (added)
    - Optional description now appears in initialization metadata.
@@ -83,7 +96,8 @@ The `2025-11-25` changelog is the authoritative delta from `2025-06-18`.
    - Recommendation: mention it in initialization examples as optional metadata.
 
 6. **stdio stderr clarification** (changed)
-   - Clarified that stdio servers may use stderr for general logging (not only errors).
+   - Clarified that stdio servers may use stderr for general logging (not only
+     errors).
    - Impact: low. This workshop already logs startup messages to stderr.
    - Recommendation: add a short note confirming this is spec-consistent.
 
@@ -95,7 +109,8 @@ The `2025-11-25` changelog is the authoritative delta from `2025-06-18`.
 #### B) Important MCP changes, but better routed to other workshops in the series
 
 1. **URL-mode elicitation + required URL elicitation error (`-32042`)** (added)
-2. **Elicitation schema updates (`EnumSchema` redesign, defaults on primitive types, single/multi-select support)** (changed)
+2. **Elicitation schema updates (`EnumSchema` redesign, defaults on primitive
+   types, single/multi-select support)** (changed)
 3. **Sampling now supports tools + `toolChoice` loop semantics** (added)
 4. **Experimental Tasks model for durable/async request handling** (added)
 5. **Auth/OAuth discovery and consent flow updates**
@@ -105,13 +120,15 @@ The `2025-11-25` changelog is the authoritative delta from `2025-06-18`.
    - OAuth client metadata document support
 6. **Streamable HTTP/SSE polling + origin-handling clarifications** (changed)
 
-These are significant, but they are not core to this Fundamentals repo’s current scope.
+These are significant, but they are not core to this Fundamentals repo’s current
+scope.
 
 ---
 
 ## TypeScript SDK releases since October 2025 (significant changes)
 
-Reviewed all releases from `1.19.0` (2025-10-02) through `v1.27.1` (2026-02-24) via `gh`.
+Reviewed all releases from `1.19.0` (2025-10-02) through `v1.27.1` (2026-02-24)
+via `gh`.
 
 ### Most important changes to represent in workshop material
 
@@ -119,14 +136,16 @@ Reviewed all releases from `1.19.0` (2025-10-02) through `v1.27.1` (2026-02-24) 
    - SEP-986 tool naming support
    - SEP-1319 request payload/schema decoupling
    - SEP-1034/1330 elicitation schema defaults and enum compatibility
-   - Why it matters: introduces key spec-alignment behavior that informs naming/schema guidance.
+   - Why it matters: introduces key spec-alignment behavior that informs
+     naming/schema guidance.
 
 2. **`1.23.0`**
    - URL elicitation (SEP-1036)
    - Sampling with tools (SEP-1577)
    - JSON Schema 2020-12 support behavior (SEP-1613)
    - Zod v4 compatibility (while keeping v3.25+ compatibility)
-   - Why it matters: foundational new concepts for Advanced workshop content and schema story.
+   - Why it matters: foundational new concepts for Advanced workshop content and
+     schema story.
 
 3. **`1.24.0`**
    - Protocol alignment to `2025-11-25`
@@ -135,21 +154,25 @@ Reviewed all releases from `1.19.0` (2025-10-02) through `v1.27.1` (2026-02-24) 
 
 4. **`1.24.2`**
    - Optional resource annotations support
-   - Why it matters: improves resource/tool UX metadata story (relevant to richer examples).
+   - Why it matters: improves resource/tool UX metadata story (relevant to
+     richer examples).
 
 5. **`1.25.0`**
    - Stricter spec-compliance typing (removal of loose/passthrough shapes)
    - Protocol date validation
-   - Why it matters: helps prevent teaching patterns that no longer type-check cleanly.
+   - Why it matters: helps prevent teaching patterns that no longer type-check
+     cleanly.
 
 6. **`v1.26.0`** (security-critical)
    - Fix for cross-client response data leak advisory (GHSA-345p-7cg4-v4c7)
-   - Why it matters: should be your minimum safe baseline for refreshed workshops.
+   - Why it matters: should be your minimum safe baseline for refreshed
+     workshops.
 
 7. **`v1.27.0` + `v1.27.1`**
    - Task streaming methods for elicitation/sampling
    - OAuth server discovery caching backport
-   - Additional security fix: command injection prevention in example URL opening
+   - Additional security fix: command injection prevention in example URL
+     opening
    - Why it matters: better conformance and safer baseline.
 
 ### Notable patch-line items to keep in mind
@@ -161,25 +184,30 @@ Reviewed all releases from `1.19.0` (2025-10-02) through `v1.27.1` (2026-02-24) 
 
 ### Practical baseline recommendation
 
-For updated 2026 workshop material, target **`@modelcontextprotocol/sdk >= v1.27.1`** to pick up the latest spec/backport/security fixes from this period.
+For updated 2026 workshop material, target
+**`@modelcontextprotocol/sdk >= v1.27.1`** to pick up the latest
+spec/backport/security fixes from this period.
 
 ---
 
 ## What’s missing in this Fundamentals workshop right now (concept gaps)
 
-These are gaps _within this repo_ that should be addressed to claim a credible 2025-11+ refresh:
+These are gaps _within this repo_ that should be addressed to claim a credible
+2025-11+ refresh:
 
 1. **Spec version references are stale** (`2025-06-18` links throughout docs).
 2. **No explicit treatment of tool naming constraints/guidance.**
 3. **No examples of icons metadata on tools/resources/prompts/templates.**
 4. **No explicit JSON Schema dialect guidance (2020-12 default behavior).**
-5. **Error-handling section should be refreshed to the newer “tool-execution vs protocol” framing language.**
+5. **Error-handling section should be refreshed to the newer “tool-execution vs
+   protocol” framing language.**
 
 ---
 
 ## What to route to which workshop in the 4-workshop series
 
-_Assuming the series split is Fundamentals / Advanced MCP Features / Remote with Authentication / MCP-UI._
+_Assuming the series split is Fundamentals / Advanced MCP Features / Remote with
+Authentication / MCP-UI._
 
 ### Keep in **Fundamentals** (this repo)
 
@@ -217,7 +245,8 @@ _Assuming the series split is Fundamentals / Advanced MCP Features / Remote with
 
 1. Update all spec links from `2025-06-18` to `2025-11-25`.
 2. Bump SDK baseline to `v1.27.1` (and align inspector version accordingly).
-3. Re-run exercise tests and adjust any typing/schema breakage from stricter SDK types.
+3. Re-run exercise tests and adjust any typing/schema breakage from stricter SDK
+   types.
 4. Add a short “protocol revision baseline” note at workshop intro.
 
 ## P1 — Fundamentals concept alignment
@@ -227,7 +256,8 @@ _Assuming the series split is Fundamentals / Advanced MCP Features / Remote with
    - tools chapter,
    - resources chapter (including template),
    - prompts chapter.
-3. Add JSON Schema usage callout (default 2020-12, explicit `$schema` if needed).
+3. Add JSON Schema usage callout (default 2020-12, explicit `$schema` if
+   needed).
 4. Update error-handling chapter wording/examples for 2025-11 semantics.
 
 ## P2 — Cross-series coordination
@@ -236,16 +266,20 @@ _Assuming the series split is Fundamentals / Advanced MCP Features / Remote with
    - sampling-with-tools,
    - modern elicitation modes/schema,
    - tasks.
-2. Build Remote Auth workshop updates for 2025-11 auth discovery/consent changes.
+2. Build Remote Auth workshop updates for 2025-11 auth discovery/consent
+   changes.
 3. Add MCP-UI guidance for metadata-driven UX (icons/annotations).
 
 ---
 
 ## Risks / notes
 
-- **Tasks are explicitly experimental** in spec `2025-11-25`; avoid over-promising stability in learner messaging.
-- **Client support is uneven** for some newer features; workshop copy should distinguish “spec-defined” vs “widely implemented in clients today.”
-- **Version drift risk** remains high if docs pin old spec URLs; treat link updates as mandatory, not optional polish.
+- **Tasks are explicitly experimental** in spec `2025-11-25`; avoid
+  over-promising stability in learner messaging.
+- **Client support is uneven** for some newer features; workshop copy should
+  distinguish “spec-defined” vs “widely implemented in clients today.”
+- **Version drift risk** remains high if docs pin old spec URLs; treat link
+  updates as mandatory, not optional polish.
 
 ---
 
