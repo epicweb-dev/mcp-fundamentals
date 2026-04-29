@@ -11,7 +11,7 @@ const workshopRoot = here('..')
 // Watch the exercises directory
 const watcher = chokidar.watch(path.join(workshopRoot, 'exercises'), {
 	ignored: [
-		/(^|[\/\\])\../, // ignore dotfiles
+		/(^|[/\\])\../, // ignore dotfiles
 		(path) => {
 			// Only watch directories up to depth 2
 			const relativePath = path.slice(workshopRoot.length + 1)
@@ -60,8 +60,6 @@ async function run() {
 			stdio: 'inherit',
 			cwd: workshopRoot,
 		})`node ./epicshop/fix.js`
-	} catch (error) {
-		throw error
 	} finally {
 		running = false
 	}
