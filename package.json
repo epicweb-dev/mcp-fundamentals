@@ -46,7 +46,8 @@
     "lint": "oxlint --config .oxlintrc.json --quiet .",
     "format": "oxfmt -c ./oxfmt.config.mjs",
     "typecheck": "tsc -b",
-    "validate:all": "npm-run-all --parallel --print-label --print-name --continue-on-error test:all lint typecheck"
+    "validate:all": "npm-run-all --parallel --print-label --print-name --continue-on-error test:all lint typecheck",
+    "format:check": "oxfmt -c ./oxfmt.config.mjs --check"
   },
   "keywords": [],
   "author": "Kent C. Dodds <me@kentcdodds.com> (https://kentcdodds.com/)",

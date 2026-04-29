@@ -1,3 +1,7 @@
-import config from '@epic-web/config/oxfmt'
+import epicOxfmt from '@epic-web/config/oxfmt'
+import { defineConfig } from 'oxfmt'
 
-export default config
+export default defineConfig({
+	...epicOxfmt,
+	ignorePatterns: [...epicOxfmt.ignorePatterns, '**/.wrangler/**'],
+})
