@@ -1,0 +1,28 @@
+{
+  "extends": [
+    "./node_modules/@epic-web/config/oxlint-config.json"
+  ],
+  "rules": {
+    "eslint/no-unused-vars": "off",
+    "typescript/no-floating-promises": "off",
+    "eslint/no-undef": "off",
+    "jest/valid-expect": "off",
+    "vitest/expect-expect": "off",
+    "jest/expect-expect": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*"
+      ],
+      "rules": {
+        "eslint/no-unused-vars": "off",
+        "typescript/no-floating-promises": "off",
+        "eslint/no-undef": "off",
+        "jest/valid-expect": "off",
+        "vitest/expect-expect": "off",
+        "jest/expect-expect": "off"
+      }
+    }
+  ]
+}

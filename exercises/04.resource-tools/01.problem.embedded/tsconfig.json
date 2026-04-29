@@ -1,4 +1,18 @@
 {
-	"extends": ["@epic-web/config/typescript"],
-	"include": ["types/**/*.d.ts", "src/**/*.ts"]
+  "extends": [
+    "@epic-web/config/typescript"
+  ],
+  "include": [
+    "types/**/*.d.ts",
+    "src/**/*.ts"
+  ],
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "lib": [
+      "ESNext"
+    ],
+    "types": [
+      "node"
+    ]
+  }
 }

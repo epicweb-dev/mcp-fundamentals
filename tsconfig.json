@@ -82,5 +82,14 @@
     {
       "path": "exercises/05.prompts/03.solution.completion"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "lib": [
+      "ESNext"
+    ],
+    "types": [
+      "node"
+    ]
+  }
 }
