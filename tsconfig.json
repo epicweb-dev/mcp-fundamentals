@@ -1,95 +1,89 @@
 {
-  "files": [],
-  "exclude": [
-    "node_modules"
-  ],
-  "references": [
-    {
-      "path": "exercises/01.ping/01.problem.connect"
-    },
-    {
-      "path": "exercises/01.ping/01.solution.connect"
-    },
-    {
-      "path": "exercises/02.tools/01.problem.simple"
-    },
-    {
-      "path": "exercises/02.tools/01.solution.simple"
-    },
-    {
-      "path": "exercises/02.tools/02.problem.args"
-    },
-    {
-      "path": "exercises/02.tools/02.solution.args"
-    },
-    {
-      "path": "exercises/02.tools/03.problem.errors"
-    },
-    {
-      "path": "exercises/02.tools/03.solution.errors"
-    },
-    {
-      "path": "exercises/03.resources/01.problem.simple"
-    },
-    {
-      "path": "exercises/03.resources/01.solution.simple"
-    },
-    {
-      "path": "exercises/03.resources/02.problem.template"
-    },
-    {
-      "path": "exercises/03.resources/02.solution.template"
-    },
-    {
-      "path": "exercises/03.resources/03.problem.list"
-    },
-    {
-      "path": "exercises/03.resources/03.solution.list"
-    },
-    {
-      "path": "exercises/03.resources/04.problem.completion"
-    },
-    {
-      "path": "exercises/03.resources/04.solution.completion"
-    },
-    {
-      "path": "exercises/04.resource-tools/01.problem.embedded"
-    },
-    {
-      "path": "exercises/04.resource-tools/01.solution.embedded"
-    },
-    {
-      "path": "exercises/04.resource-tools/02.problem.linked"
-    },
-    {
-      "path": "exercises/04.resource-tools/02.solution.linked"
-    },
-    {
-      "path": "exercises/05.prompts/01.problem.prompts"
-    },
-    {
-      "path": "exercises/05.prompts/01.solution.prompts"
-    },
-    {
-      "path": "exercises/05.prompts/02.problem.optimized-prompt"
-    },
-    {
-      "path": "exercises/05.prompts/02.solution.optimized-prompt"
-    },
-    {
-      "path": "exercises/05.prompts/03.problem.completion"
-    },
-    {
-      "path": "exercises/05.prompts/03.solution.completion"
-    }
-  ],
-  "compilerOptions": {
-    "ignoreDeprecations": "6.0",
-    "lib": [
-      "ESNext"
-    ],
-    "types": [
-      "node"
-    ]
-  }
+	"files": [],
+	"exclude": ["node_modules"],
+	"references": [
+		{
+			"path": "exercises/01.ping/01.problem.connect"
+		},
+		{
+			"path": "exercises/01.ping/01.solution.connect"
+		},
+		{
+			"path": "exercises/02.tools/01.problem.simple"
+		},
+		{
+			"path": "exercises/02.tools/01.solution.simple"
+		},
+		{
+			"path": "exercises/02.tools/02.problem.args"
+		},
+		{
+			"path": "exercises/02.tools/02.solution.args"
+		},
+		{
+			"path": "exercises/02.tools/03.problem.errors"
+		},
+		{
+			"path": "exercises/02.tools/03.solution.errors"
+		},
+		{
+			"path": "exercises/03.resources/01.problem.simple"
+		},
+		{
+			"path": "exercises/03.resources/01.solution.simple"
+		},
+		{
+			"path": "exercises/03.resources/02.problem.template"
+		},
+		{
+			"path": "exercises/03.resources/02.solution.template"
+		},
+		{
+			"path": "exercises/03.resources/03.problem.list"
+		},
+		{
+			"path": "exercises/03.resources/03.solution.list"
+		},
+		{
+			"path": "exercises/03.resources/04.problem.completion"
+		},
+		{
+			"path": "exercises/03.resources/04.solution.completion"
+		},
+		{
+			"path": "exercises/04.resource-tools/01.problem.embedded"
+		},
+		{
+			"path": "exercises/04.resource-tools/01.solution.embedded"
+		},
+		{
+			"path": "exercises/04.resource-tools/02.problem.linked"
+		},
+		{
+			"path": "exercises/04.resource-tools/02.solution.linked"
+		},
+		{
+			"path": "exercises/05.prompts/01.problem.prompts"
+		},
+		{
+			"path": "exercises/05.prompts/01.solution.prompts"
+		},
+		{
+			"path": "exercises/05.prompts/02.problem.optimized-prompt"
+		},
+		{
+			"path": "exercises/05.prompts/02.solution.optimized-prompt"
+		},
+		{
+			"path": "exercises/05.prompts/03.problem.completion"
+		},
+		{
+			"path": "exercises/05.prompts/03.solution.completion"
+		}
+	],
+	"compilerOptions": {
+		"ignoreDeprecations": "6.0",
+		"lib": ["ESNext"],
+		"types": ["node"]
+	}
 }

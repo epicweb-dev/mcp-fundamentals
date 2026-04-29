@@ -201,7 +201,10 @@ test('Prompt Get', async () => {
 		)
 		const firstMessage = result.messages[0]
 		invariant(firstMessage, '🚨 First message should exist')
-		invariant(firstMessage.content.type === 'text', '🚨 Message content should be a text')
+		invariant(
+			firstMessage.content.type === 'text',
+			'🚨 Message content should be a text',
+		)
 		invariant(
 			typeof firstMessage.content.text === 'string',
 			'🚨 Message content text should be a string',
