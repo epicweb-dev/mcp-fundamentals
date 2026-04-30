@@ -34,6 +34,12 @@ agent.server.registerResource(
 	{
 		title: 'Hello',
 		description: 'A simple hello world resource',
+		icons: [
+			{
+				src: 'https://modelcontextprotocol.io/favicon.svg',
+				mimeType: 'image/svg+xml',
+			},
+		],
 	},
 	async (uri) => {
 		return {

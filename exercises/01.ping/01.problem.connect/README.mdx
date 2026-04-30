@@ -8,11 +8,10 @@ transport for it, and then it should respond to `ping` requests.
 
 <callout-info>
 	ℹ️ NOTE: When initializing your MCP server, you'll need to provide `name` and
-	`version` fields. The `name` is a human-readable identifier for your server
-	(for example, `MyProductName`), and the `version` indicates the version of
-	your server (such as `1.0.0`). These fields help clients and tools identify
-	and interact with your server correctly, and are required by the MCP
-	specification.
+	`version` fields. The `name` is the stable identifier for your server, and the
+	`version` indicates the version of your server (such as `1.0.0`). You can also
+	provide display metadata like `title`, `description`, `icons`, and
+	`websiteUrl` so clients can present your server nicely.
 </callout-info>
 
 Start in <InlineFile file="src/index.ts" /> and follow the instructions in the
@@ -21,4 +20,4 @@ comments.
 Right now if you try to run the server, you'll get an error. Let's fix that!
 
 - 📜 [MCP TypeScript SDK Docs](https://github.com/modelcontextprotocol/typescript-sdk)
-- 📜 [MCP Spec: Ping](https://modelcontextprotocol.io/specification/2025-06-18/basic/utilities/ping)
+- 📜 [MCP Spec: Ping](https://modelcontextprotocol.io/specification/2025-11-25/basic/utilities/ping)

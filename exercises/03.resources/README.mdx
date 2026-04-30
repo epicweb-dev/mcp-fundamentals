@@ -14,9 +14,14 @@ with clients—such as files, database entries, or application metadata—using 
 uniform interface. Each resource is uniquely identified by a URI and can be
 described with metadata like a name, description, and MIME type.
 
+Resources and resource templates can also include optional metadata such as
+`title`, `description`, and `icons` to help clients present them nicely. Keep
+the URI as the stable identifier and use display metadata for the user
+experience.
+
 <callout-success>
 	From [the MCP
-	Spec](https://modelcontextprotocol.io/specification/2025-06-18/server/resources):
+	Spec](https://modelcontextprotocol.io/specification/2025-11-25/server/resources):
 	Resources in MCP are designed to be **application-driven**, with host
 	applications determining how to incorporate context based on their needs.
 	However, implementations are free to expose resources through any interface
@@ -106,6 +111,12 @@ jira://myworkspace/ticket/304
 amazon://product/1234567890
 ```
 
+<callout-info>
+	The `ui://` URI scheme is reserved for MCP Apps UI templates. This workshop
+	uses data-oriented examples like `epicme://...` and avoids `ui://` because UI
+	resources are covered separately.
+</callout-info>
+
 📜 If you're unfamiliar with URIs and their formats, you can read more about
 them on Wikipedia:
 [Uniform Resource Identifier](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier).
@@ -130,10 +141,10 @@ rich, structured context with language models and other clients.
 
 <callout-warning>
 	You'll notice we have a bunch of tools for reading data which you might think
-	we should just use resources for. Unfortunately, all the popular MCP clients
-	as of today are very limited in their use of resources so we'll keep those
-	tools around. In the future, we should just use resources for this stuff.
+	we should just use resources for. Client support for resources varies by host
+	and continues to improve, so we'll keep those tools around for compatibility
+	while still exposing resources where they make sense.
 </callout-warning>
 
 - 📜
-  [MCP Spec: Resources](https://modelcontextprotocol.io/specification/2025-06-18/server/resources)
+  [MCP Spec: Resources](https://modelcontextprotocol.io/specification/2025-11-25/server/resources)

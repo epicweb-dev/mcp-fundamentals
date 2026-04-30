@@ -20,6 +20,7 @@ server.registerTool(
 	{
 		title: 'Add',
 		description: 'Add one and two',
+		inputSchema: {},
 	},
 	async () => {
 		return {

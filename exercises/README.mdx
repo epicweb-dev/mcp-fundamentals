@@ -10,7 +10,7 @@ oriented and to give you your assignments for the workshop!
 
 Welcome to **MCP Fundamentals**! In this workshop, you'll dive into the world of
 the
-[Model Context Protocol (MCP)](https://modelcontextprotocol.io/specification/2025-06-18)—an
+[Model Context Protocol (MCP)](https://modelcontextprotocol.io/specification/2025-11-25)—an
 open protocol designed to seamlessly connect AI models with external data
 sources and tools. Think of MCP as the "USB-C port" for AI applications: it
 standardizes how LLMs (Large Language Models) access context, resources, and
@@ -40,9 +40,16 @@ flowchart LR
 Throughout this workshop, you'll learn:
 
 - The core architecture of MCP: **hosts**, **clients**, and **servers**
-  ([see architecture](https://modelcontextprotocol.io/specification/2025-06-18/architecture))
+  ([see architecture](https://modelcontextprotocol.io/specification/2025-11-25/architecture))
 - How JSON-RPC powers communication and stateful sessions between components
 - How to expose resources, prompts, and tools to LLMs using MCP
+
+<callout-info>
+	**Spec version note:** MCP is versioned by specification release. This
+	workshop focuses on the stable server fundamentals from the current released
+	spec. Newer or optional capabilities like authentication, sampling, tasks, and
+	MCP Apps are covered in other workshops or dedicated follow-up material.
+</callout-info>
 
 We'll focus on the fundamentals—no authentication or authorization required for
 our exercises—so you can get hands-on experience with the protocol's most
@@ -54,7 +61,7 @@ to build our MCP server and the
 [MCP Inspector](https://github.com/modelcontextprotocol/inspector) to test it.
 
 If you're curious about the details, I highly recommend checking out the
-[official MCP specification](https://modelcontextprotocol.io/specification/2025-06-18)
+[official MCP specification](https://modelcontextprotocol.io/specification/2025-11-25)
 and the [introduction](https://modelcontextprotocol.io/introduction). These
 resources provide a deep dive into the protocol, its design principles, and
 practical implementation tips.

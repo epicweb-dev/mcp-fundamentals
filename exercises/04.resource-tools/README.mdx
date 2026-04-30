@@ -33,7 +33,7 @@ Sometimes, you want your tool to return the _full_ resource data. MCP supports t
 
 This is useful when the resource is small or when you want the client/LLM to have all the details immediately.
 
-- 📜 [MCP Spec: Tools (Embedded Resources)](https://modelcontextprotocol.io/specification/2025-06-18/server/tools#embedded-resources)
+- 📜 [MCP Spec: Tools (Embedded Resources)](https://modelcontextprotocol.io/specification/2025-11-25/server/tools#embedded-resources)
 
 ## Linked Resources
 
@@ -51,6 +51,18 @@ Other times, you want to _reference_ a resource without including all its data. 
 
 This is ideal for lists, large resources, or when you want to let the client decide what to fetch.
 
+Resource links are different from embedded resources and from structured tool
+output. An embedded resource includes the resource body immediately, a resource
+link points to a resource the client can read later, and structured output is
+machine-readable data that belongs to the tool result itself.
+
+<callout-info>
+	If you build UI with MCP Apps, don't treat an embedded `text/html` resource
+	returned from a tool as the modern UI pattern. MCP Apps uses predeclared
+	`ui://` resources and links them from tool metadata such as
+	`_meta.ui.resourceUri`.
+</callout-info>
+
 ## What You'll Do in This Exercise
 
 You'll update your EpicMe journaling app's tools to:
@@ -60,4 +72,4 @@ You'll update your EpicMe journaling app's tools to:
 
 By the end, your tools and resources will work hand-in-hand, enabling richer, more actionable results for clients and LLMs.
 
-- 📜 [MCP Spec: Tools (Resource Links)](https://modelcontextprotocol.io/specification/2025-06-18/server/tools#resource-links)
+- 📜 [MCP Spec: Tools (Resource Links)](https://modelcontextprotocol.io/specification/2025-11-25/server/tools#resource-links)

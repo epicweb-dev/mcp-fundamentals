@@ -27,6 +27,15 @@ connection by spawning a new process and then use STDIO to communicate with it.
 	keep things simple and not much changes in this workshop by using `stdio`.
 </callout-info>
 
+<callout-info>
+	HTTP transports continue to evolve. For example, modern Streamable HTTP
+	clients include the `MCP-Protocol-Version` header on subsequent requests, and
+	upcoming transport proposals are exploring more stateless HTTP patterns and
+	routing headers like `Mcp-Method` and `Mcp-Name`. This workshop intentionally
+	avoids those transport details so we can focus on the server primitives that
+	stay the same across transports.
+</callout-info>
+
 ## MCP Initialization
 
 Here's what happens when the client initializes the session with the server:

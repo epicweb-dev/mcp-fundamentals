@@ -6,6 +6,14 @@ const server = new McpServer(
 		name: 'epicme',
 		title: 'EpicMe',
 		version: '1.0.0',
+		description: 'A learning MCP server for the EpicMe journal app.',
+		websiteUrl: 'https://www.epicai.pro',
+		icons: [
+			{
+				src: 'https://www.epicai.pro/favicon.svg',
+				mimeType: 'image/svg+xml',
+			},
+		],
 	},
 	{
 		instructions: 'This lets you solve math problems.',

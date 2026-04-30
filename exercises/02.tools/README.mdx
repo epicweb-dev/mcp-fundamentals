@@ -14,13 +14,27 @@ it sends a request specifying the tool's name and the required arguments. The
 server executes the tool and returns the result in a structured format, which
 can include text, images, audio, or even references to additional resources.
 
+MCP currently uses JSON Schema 2020-12 as the default dialect for embedded
+schemas. When you use Zod with the TypeScript SDK, the SDK generates the JSON
+Schema for you. If you hand-write JSON Schema, make sure it is valid for the
+current default dialect or explicitly declare a different `$schema`.
+
+For no-argument tools, prefer an explicit empty input shape (`inputSchema: {}`)
+over omitting the schema entirely. The SDK exposes that to clients as an object
+schema with no declared properties.
+
+Tool names should be stable protocol identifiers. The current spec recommends
+1-64 characters using ASCII letters, digits, `_`, `-`, `.`, and `/`. Use
+`title` for the human-friendly display label and `name` for the stable
+model/protocol identifier.
+
 In the future, hopefully we can even respond with UI! For more on this, check
 out my post
 [The future of AI interaction: Beyond just text](https://www.epicai.pro/the-future-of-ai-interaction-beyond-just-text-w22ps).
 
 <callout-success>
 	From [the MCP
-	Spec](https://modelcontextprotocol.io/specification/2025-06-18/server/tools):
+	Spec](https://modelcontextprotocol.io/specification/2025-11-25/server/tools):
 	Tools in MCP are designed to be **model-controlled**, meaning that the
 	language model can discover and invoke tools automatically based on its
 	contextual understanding and the user's prompts. However, implementations are
@@ -83,7 +97,19 @@ sequenceDiagram
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 
 const server = new McpServer(
-	{ name: 'hello-world-server', version: '1.0.0' },
+	{
+		name: 'hello-world-server',
+		title: 'Hello World',
+		version: '1.0.0',
+		description: 'A tiny MCP server used for learning tool basics.',
+		websiteUrl: 'https://modelcontextprotocol.io',
+		icons: [
+			{
+				src: 'https://modelcontextprotocol.io/favicon.svg',
+				mimeType: 'image/svg+xml',
+			},
+		],
+	},
 	{
 		capabilities: {
 			// add the tools object to explicitly declare that this server supports tools
@@ -102,6 +128,21 @@ server.registerTool(
 		title: 'Hello',
 		// llm-facing description (clients could also display this to the user)
 		description: 'Say hello',
+		// empty input shape for a tool that does not accept arguments
+		inputSchema: {},
+	},
+	async () => {
+		return {
+			content: [{ type: 'text', text: 'Hello!' }],
+		}
+	},
+)
+
+server.registerTool(
+	'hello_name',
+	{
+		title: 'Hello by Name',
+		description: 'Say hello to a named person',
 		// add a schema to validate the input
 		inputSchema: {
 			// the input description is llm-facing, (the user may see it as well)
@@ -157,4 +198,8 @@ dynamic results based on user input. This will give you hands-on experience with
 MCP's tool registration, input validation (using [Zod](https://zod.dev/)
 schemas), and result formatting.
 
-- 📜 [MCP Spec: Tools](https://modelcontextprotocol.io/specification/2025-06-18/server/tools)
+Sampling with tools is a powerful advanced feature, but we intentionally leave
+it out of this fundamentals workshop. You'll learn the basic server-controlled
+tool model here first.
+
+- 📜 [MCP Spec: Tools](https://modelcontextprotocol.io/specification/2025-11-25/server/tools)

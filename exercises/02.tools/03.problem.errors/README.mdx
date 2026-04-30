@@ -33,4 +33,11 @@ it is, throw an error with a descriptive message and then try it out in the
 inspector. You'll notice the `isError` field is set to `true` and the content is
 the helpful error message you provided.
 
-- [📜 MCP Spec: Errors](https://modelcontextprotocol.io/specification/2025-06-18/server/tools#error-handling)
+<callout-info>
+	Input validation failures and expected tool-domain failures should be returned
+	as tool execution errors with `isError: true`. JSON-RPC protocol errors are
+	for problems like unknown methods, malformed requests, or server failures that
+	prevent the tool call from running normally.
+</callout-info>
+
+- [📜 MCP Spec: Errors](https://modelcontextprotocol.io/specification/2025-11-25/server/tools#error-handling)

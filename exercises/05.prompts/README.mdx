@@ -17,9 +17,13 @@ or "review this code"), each with a clear description and customizable
 arguments. This enables richer, more user-driven interactions, where clients can
 select and fill in prompts as needed.
 
+Prompt argument schemas are also JSON Schema-backed. In this workshop we use
+Zod through the TypeScript SDK, which generates schema that matches the current
+MCP defaults for us.
+
 <callout-success>
 	From [the MCP
-	Spec](https://modelcontextprotocol.io/specification/2025-06-18/server/prompts):
+	Spec](https://modelcontextprotocol.io/specification/2025-11-25/server/prompts):
 	Prompts are designed to be **user-controlled**, meaning they are exposed from
 	servers to clients with the intention of the user being able to explicitly
 	select them for use. Typically, prompts would be triggered through
@@ -58,6 +62,13 @@ sequenceDiagram
 	Again, the only part here that's specified is the client and server
 	communication. The rest is up to whoever implements the client.
 </callout-warning>
+
+<callout-info>
+	Some MCP metadata types now support richer display metadata such as icons. The
+	current high-level TypeScript SDK prompt registration helper exposes `title`,
+	`description`, and `argsSchema`, so we'll keep prompts focused on those fields
+	here.
+</callout-info>
 
 For example, a server might expose a simple "hello world" prompt:
 
@@ -106,4 +117,7 @@ When designing prompts for your MCP server, consider these best practices:
 
 For a comprehensive survey of prompt engineering techniques and best practices, see [The Prompt Report: A Systematic Survey of Prompt Engineering Techniques](https://arxiv.org/abs/2406.06608) by Schulhoff et al., which provides detailed analysis of 58 LLM prompting techniques and guidelines for working with state-of-the-art language models.
 
-- 📜 [MCP Prompts Specification](https://modelcontextprotocol.io/specification/2025-06-18/server/prompts)
+Prompt list change notifications are useful for dynamic servers, but they are an
+advanced topic covered outside this fundamentals workshop.
+
+- 📜 [MCP Prompts Specification](https://modelcontextprotocol.io/specification/2025-11-25/server/prompts)
