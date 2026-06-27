@@ -22,7 +22,7 @@ jobs:
       - name: ⎔ Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 26
 
       - name: ▶️ Add repo
         run: |
@@ -53,7 +53,7 @@ jobs:
       - name: ⎔ Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 26
 
       - name: 📦 Install dependencies
         run: npm ci
