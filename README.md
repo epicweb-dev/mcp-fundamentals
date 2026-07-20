@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/epicweb-dev-mcp-fundamentals-badge.png)](https://mseep.ai/app/epicweb-dev-mcp-fundamentals)
+
 <div>
   <h1 align="center"><a href="https://www.epicai.pro/">MCP Fundamentals 🧱</a></h1>
   <strong>
