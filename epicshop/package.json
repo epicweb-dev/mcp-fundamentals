@@ -1,5 +1,14 @@
 {
   "type": "module",
+  "allowScripts": {
+    "@sentry-internal/node-cpu-profiler@2.2.0": true,
+    "@sentry/cli@2.58.5": true,
+    "esbuild@0.27.3": true,
+    "esbuild@0.28.0": true,
+    "fsevents@2.3.2": true,
+    "fsevents@2.3.3": true,
+    "msw@2.13.6": true
+  },
   "dependencies": {
     "@epic-web/workshop-app": "^6.90.24",
     "@epic-web/workshop-utils": "^6.90.24",
