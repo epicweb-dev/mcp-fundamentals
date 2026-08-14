@@ -10,11 +10,11 @@
     "msw@2.13.6": true
   },
   "dependencies": {
-    "@epic-web/workshop-app": "^6.90.24",
-    "@epic-web/workshop-utils": "^6.90.24",
+    "@epic-web/workshop-app": "^6.90.28",
+    "@epic-web/workshop-utils": "^6.90.28",
     "chokidar": "^5.0.0",
     "enquirer": "^2.4.1",
-    "epicshop": "^6.90.24",
+    "epicshop": "^6.90.28",
     "execa": "^9.6.1",
     "fs-extra": "^11.3.2",
     "get-port": "^7.1.0",
